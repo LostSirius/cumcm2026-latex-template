@@ -25,11 +25,10 @@ cumcmthesis 是为全国大学生数学建模竞赛编写的 `LaTeX` 模板, 旨
 
 ![](https://github.com/latexstudio/CUMCMThesis/blob/master/example-1.png)
 
-![](https://github.com/latexstudio/CUMCMThesis/blob/master/example-3.png)
-
-![](https://github.com/latexstudio/CUMCMThesis/blob/master/example-4.png)
-
 ## 更新记录
+
+2026 年 8 月：
+1， 更新了 AI 使用声明书。
 
 2023 年 9 月：
 1， 更新了前面承诺书版式。

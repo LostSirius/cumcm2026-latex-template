@@ -52,16 +52,6 @@
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
 
 \makeatletter
-\renewcommand{\maketitle}{%
-  \thispagestyle{plain}%
-  \setcounter{page}{1}%
-  \begin{center}
-    \vspace*{-0.6em}
-    {\heiti\zihao{2}\bfseries \@title\par}
-    \vspace{1.1em}
-    {\heiti\zihao{3}\bfseries 摘\quad 要\par}
-  \end{center}
-}
 \AtBeginDocument{\hypersetup{pdftitle={\@title},pdfauthor={},pdfsubject={2026 CUMCM参赛论文}}}
 \makeatother
 

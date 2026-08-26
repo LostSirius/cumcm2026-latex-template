@@ -59,9 +59,9 @@
 \memberb{ }
 \memberc{ }
 \supervisor{ }%辅导老师
-\yearinput{2023}
+\yearinput{2026}
 \monthinput{9}
-\dayinput{8}
+\dayinput{1}
 %===================================
 
 \begin{document}
@@ -70,28 +70,75 @@
  \begin{abstract}
 cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨在让大家专注于 论文的内容写作, 而不用花费过多精力在格式的定制和调整上.  使用者需要有一 定的 \LaTeX{} 的使用经验, 至少要会使用常用宏包的一些功能, 比如参考文献，数学公式，图片使用，列表环境等等. 例子文件参看 \texttt{example.tex}.
 
-\begin{framee} 
- 
-今年的格式变化如下：
-\begin{enumerate}
-\item 论文提交明确不需要承诺书内容，模版进行了删减，要求如下：
-
-\centerline{\includegraphics[width=11cm]{upload}}
-
-\item 字体设置进行了删减，保证 overleaf 等平台可以直接使用。
-
-\item 更新了 AI 使用声明格式。
-
+\begin{framee}\small
+  今年的格式变化如下：
+\begin{itemize}
+\item 更新了人工智能工具使用声明要求, 通知如下. 原文见 \url{https://www.mcm.edu.cn/html_cn/node/fef94648f2836ab6cc81586f4c38512b.html}
+\end{itemize}
+\setlength \fboxsep {1pt}
+\fbox{\parbox{\linewidth-2.8pt}{\null
+\begingroup
+  \centering \bfseries
+  全国大学生数学建模竞赛人工智能工具使用规定
+  （2026年试行）\par
+\endgroup\smallskip
+\begin{enumerate}[label = \arabic*., topsep = 0pt, itemsep = 1pt]
+  \item
+  本规定适用于全国大学生数学建模竞赛中人工智能（以下简称 AI）工具
+  的使用，包括但不限于大语言模型、生成式 AI、代码辅助工具和 AI智能
+  体等。
+  \item
+  解决竞赛问题不要求必须使用 AI 工具。参赛队可在竞赛期间使用 AI 工
+  具，但应遵循公开透明原则，确保参赛作品的核心建模与分析由参赛队
+  主导，并对 AI 参与完成的内容逐项人工审查与核实。
+  \item
+  参赛队应在论文参考文献之前设置“AI 工具使用声明”
+  ， 内容如下，二
+  者择一：
+  （1） 未使用 AI工具的，声明：“本参赛队在竞赛过程中未使用任何 AI
+  工具。”
+  （2） 使用 AI 工具的，声明：“本参赛队在竞赛过程中使用了 AI 工具，
+  主要用于【简要用途，如语言润色、代码调试等】，详细使用情况
+  见支撑材料。”
+  \item
+  使用AI工具的参赛作品，应在支撑材料中包含AI工具使用详情说明（PDF
+  格式，文件名为“AI工具使用详情.pdf”），内容包括：
+  （1） 所用AI 工具名称、版本或型号；
+  （2） 具体使用目的和环节；
+  （3） 主要提示方式与使用过程说明（可附典型交互示例）；
+  （4） 对AI 输出的采纳、人工修改和核验的主要情况（语言润色除外）。
+  \item
+  不符合上述规定的参赛作品，视为违反竞赛规则，将根据情节轻重予以
+  处理。故意隐瞒 AI使用情况、作出虚假声明，或者将未经必要人工审查
+  与核实的AI 生成内容直接作为核心建模与分析成果提交的，取消其评奖
+  资格。
+  \item
+  本规定自2026年9月 1日起试行。此前相关规定与本规定不一致的，以
+  本规定为准。
+  \item
+  本规定由全国大学生数学建模竞赛组委会负责解释。
 \end{enumerate}
+}}
 
 \end{framee}
 
-
-\url{https://www.latexstudio.net} 陆续推出了更优质的资源，欢迎学习 。欢迎大家到QQ群里沟通交流：91940767/200392395。问答区交流 \LaTeX{}技术：\url{https://ask.latexstudio.net}，有问题就来这里，与大神零距离。
-
-\uwave{关注我们的微信公众号}：
-
-\centerline{\includegraphics[width=6cm]{gongzhonghao2}}
+\begin{center}
+\begin{minipage}{.72\linewidth}
+  \begin{itemize}
+    \item
+    网站\url{https://www.latexstudio.net} 陆续推出了更优质的资源，欢迎学习。
+    \item
+    欢迎大家到 QQ 群里沟通交流：91940767/200392395。问答区交流 \LaTeX{}技术：\url{https://ask.latexstudio.net}，有问题就来这里，与大神零距离。
+    \item
+    \uwave{右侧扫码关注我们的微信公众号}
+  \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{.24\linewidth}
+  \centering
+  \includegraphics[width = \linewidth]{gongzhonghao2}
+\end{minipage}
+\end{center}
 
 \keywords{\TeX{}\quad  图片\quad   表格\quad  公式}
 \end{abstract}
@@ -116,48 +163,49 @@ cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨�
 使用该模板前，请阅读模板的使用说明文档。下面给出模板使用的大概样式。
 
 \begin{tcode}
-    \documentclass{cumcmthesis}
-    %\documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页
+  \documentclass{cumcmthesis}
+  % \documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页
 
-    \title{论文题目}
-    \tihao{A}            % 题号
-    \baominghao{4321}    % 报名号
-    \schoolname{你的大学}
-    \membera{成员A}
-    \memberb{成员B}
-    \memberc{成员C}
-    \supervisor{指导老师}
-    \yearinput{2017}     % 年
-    \monthinput{08}      % 月
-    \dayinput{22}        % 日
+  \title{论文题目}
+  \tihao{A}            % 题号
+  \baominghao{4321}    % 报名号
+  \schoolname{你的大学}
+  \membera{成员A}
+  \memberb{成员B}
+  \memberc{成员C}
+  \supervisor{指导老师}
+  \yearinput{2017}     % 年
+  \monthinput{08}      % 月
+  \dayinput{22}        % 日
 
-    \begin{document}
-        \maketitle
-        \begin{abstract}
-            摘要的具体内容。
-            \keywords{关键词1\quad  关键词2\quad   关键词3}
-        \end{abstract}
-        \tableofcontents
-        \section{问题重述}
-        \subsection{问题的提出}
-        \section{模型的假设}
-        \section{符号说明}
-        \begin{center}
-            \begin{tabular}{cc}
-                \hline
-                \makebox[0.3\textwidth][c]{符号}	&  \makebox[0.4\textwidth][c]{意义} \\ \hline
-                D	    & 木条宽度（cm） \\ \hline
-            \end{tabular}
-        \end{center}
-        \section{问题分析}
-        \section{总结}
-        \begin{thebibliography}{9}%宽度9
-            \bibitem{bib:one} ....
-        \end{thebibliography}
-        \begin{appendices}
-            附录的内容。
-        \end{appendices}
-    \end{document}
+  \begin{document}
+    \maketitle
+    \begin{abstract}
+      摘要的具体内容。
+      \keywords{关键词1\quad  关键词2\quad   关键词3}
+    \end{abstract}
+    \tableofcontents
+    \section{问题重述}
+    \subsection{问题的提出}
+    \section{模型的假设}
+    \section{符号说明}
+    \begin{center}
+      \begin{tabular}{cc}
+        \hline
+        \makebox[.3\textwidth][c]{符号} &
+        \makebox[.4\textwidth][c]{意义} \\ \hline
+        D & 木条宽度（cm）\\ \hline
+      \end{tabular}
+    \end{center}
+    \section{问题分析}
+    \section{总结}
+    \begin{thebibliography}{9}%宽度9
+      \bibitem{bib:one} ....
+    \end{thebibliography}
+    \begin{appendices}
+      附录的内容。
+    \end{appendices}
+  \end{document}
 \end{tcode}
 
 根据要求，电子版论文提交时需去掉封面和编号页。可以加上 \verb|withoutpreface|  选项来实现，即：
