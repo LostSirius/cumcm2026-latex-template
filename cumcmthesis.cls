@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{cumcmthesis}
-              [2017/09/16 v2.6 Standard LaTeX Template for CUMCM]
+              [2026/08/26 v2.9 Standard LaTeX Template for CUMCM]
 %% Inital Code
 \newif\if@mcm@bwprint\@mcm@bwprintfalse
 \newif\if@mcm@preface\@mcm@prefacetrue
@@ -154,11 +154,9 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 % 设置字体
 \setmainfont{Times New Roman}
 %\setmonofont{Courier New}
-\setsansfont{Arial}
-\setCJKfamilyfont{kai}[AutoFakeBold]{simkai.ttf}
-\newcommand*{\kai}{\CJKfamily{kai}}
-\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
-\newcommand*{\song}{\CJKfamily{song}}
+\setsansfont{Arial} 
+\newcommand*{\kai}{\kaishu} 
+\newcommand*{\song}{\songti}
 
 \renewcommand\normalsize{%
 	\@setfontsize\normalsize{12.05}{14.45}%

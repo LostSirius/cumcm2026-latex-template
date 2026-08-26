@@ -1,11 +1,57 @@
-\documentclass{cumcmthesis}
-% \documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页，电子版提交的时候使用。
+% 为了满足 2026 年上传要求可以选择不生成封面和编号页，参考这里
+% 参考这里：https://cumcm.cnki.net/cumcm/studentHome/noticeDetail?id=c0c5220f-0226-4cd8-bce1-e1f81e1e23f6
 
+%\documentclass{cumcmthesis}
 
-\usepackage[framemethod=TikZ]{mdframed}
+\documentclass[withoutpreface,bwprint]{cumcmthesis} %去掉封面与编号页，电子版提交的时候使用。
+
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{cumcm2026}
+
+\newtcolorbox{framee}[1][]{
+  enhanced,
+  skin=enhancedlast jigsaw,
+  attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+  fonttitle=\bfseries\sffamily,
+  colbacktitle=blue!45,
+  colframe=red!50!black,
+  interior style={
+    top color=blue!10,
+    bottom color=red!10
+  },
+  boxed title style={
+    empty,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=0pt
+  },
+  underlay boxed title={
+    \fill[blue!45!white]
+      (title.north west) --
+      (title.north east) --
+      +(\tcboxedtitleheight-1mm,-\tcboxedtitleheight+1mm) --
+      ([xshift=4mm,yshift=0.5mm]frame.north east) --
+      +(0mm,-1mm) --
+      (title.south west) -- cycle;
+    \fill[blue!45!white!50!black]
+      ([yshift=-0.5mm]frame.north west) --
+      +(-0.4,0) --
+      +(0,-0.3) -- cycle;
+    \fill[blue!45!white!50!black]
+      ([yshift=-0.5mm]frame.north east) --
+      +(0,-0.3) --
+      +(0.4,0) -- cycle;
+  },
+  title={2026 年建模比赛格式变化说明},
+  #1
+}
+
 \usepackage{url}   % 网页链接
 \usepackage{subcaption} % 子标题
 \title{全国大学生数学建模竞赛编写的 \LaTeX{} 模板}
+
+%%=======如下信息已经不再需要填写========
 \tihao{A}
 \baominghao{4321}
 \schoolname{XX大学}
@@ -16,35 +62,32 @@
 \yearinput{2023}
 \monthinput{9}
 \dayinput{8}
+%===================================
 
 \begin{document}
 
  \maketitle
  \begin{abstract}
-cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨在让大家专注于 论文的内容写作, 而不用花费过多精力在格式的定制和调整上. 本手册是相应的参考, 其 中提供了一些环境和命令可以让模板的使用更为方便. 同时需要注意, 使用者需要有一 定的 \LaTeX{} 的使用经验, 至少要会使用常用宏包的一些功能, 比如参考文献，数学公式，图片使用，列表环境等等. 例子文件参看 \texttt{example.tex}.
+cumcmthesis 是为全国大学生数学建模竞赛编写的\LaTeX{}模板, 旨在让大家专注于 论文的内容写作, 而不用花费过多精力在格式的定制和调整上.  使用者需要有一 定的 \LaTeX{} 的使用经验, 至少要会使用常用宏包的一些功能, 比如参考文献，数学公式，图片使用，列表环境等等. 例子文件参看 \texttt{example.tex}.
 
-\begin{mdframed} [%
-	roundcorner=5pt,
-	linecolor=gray!50,
-	outerlinewidth=0.5pt,
-	middlelinewidth=0.3pt, backgroundcolor=gray!2,
-innertopmargin=\topskip, frametitle={2023 年建模比赛格式变化说明},
-frametitlefont= \bfseries,frametitlerule=true,frametitlealignment =\raggedright\noindent,
-frametitlerulewidth=.5pt, frametitlebackgroundcolor=gray!2,]
-今年的格式变化主要就是一个地方，如下：
-\begin{enumerate}
-\item 论文第一页为承诺书，\textbf{\color{red}内容进行了调整}。
-
+\begin{framee} 
  
+今年的格式变化如下：
+\begin{enumerate}
+\item 论文提交明确不需要承诺书内容，模版进行了删减，要求如下：
+
+\centerline{\includegraphics[width=11cm]{upload}}
+
+\item 字体设置进行了删减，保证 overleaf 等平台可以直接使用。
+
+\item 更新了 AI 使用声明格式。
 
 \end{enumerate}
 
-\end{mdframed}
+\end{framee}
 
 
-\url{https://www.latexstudio.net} 陆续推出了更优质的资源，欢迎学习 。
-
-欢迎大家到QQ群里沟通交流：91940767/478023327/640633524。我们也开通了问答区交流 \LaTeX{}技术：\url{https://ask.latexstudio.net}，欢迎大家前来交流，有问题就来这里，与大神零距离。
+\url{https://www.latexstudio.net} 陆续推出了更优质的资源，欢迎学习 。欢迎大家到QQ群里沟通交流：91940767/200392395。问答区交流 \LaTeX{}技术：\url{https://ask.latexstudio.net}，有问题就来这里，与大神零距离。
 
 \uwave{关注我们的微信公众号}：
 
@@ -143,7 +186,7 @@ frametitlerulewidth=.5pt, frametitlebackgroundcolor=gray!2,]
 建模中不可避免要插入图片。图片可以分为矢量图与位图。位图推荐使用 \verb|jpg,png| 这两种格式，避免使用 \verb|bmp| 这类图片，容易出现图片插入失败这样情况的发生。矢量图一般有 \verb|pdf,eps| ，推荐使用 \verb|pdf|  格式的图片，尽量不要使用 \verb|eps| 图片，理由相同。
 
 注意图片的命名，避免使用中文来命名图片，可以用英文与数字的组合来命名图片。避免使用\verb|1,2,3| 这样顺序的图片命名方式。图片多了，自己都不清楚那张图是什么了，命名尽量让它有意义。下面是一个插图的示例代码。
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=.6\textwidth]{smokeblk}
     \caption{电路图}
@@ -397,6 +440,47 @@ f(x) =
 \LaTeX{}的入门书籍可以看《\LaTeX{}入门》\cite{liuhaiyang2013latex}。这是一个简单的引用，用 \verb|\cite{bibkey}| 来完成。要引用成功，当然要维护好 bibitem 了。下面是个简单的例子。
 
 
+若未使用 AI, 需要在参考文献前使用命令~\verb|\CumcmAINotUsed| 加入如下段落:
+
+\CumcmAINotUsed
+
+若使用了 AI, 需要使用命令 \verb|\CumcmAIUsed{<用途>}| 加入如下段落:
+\CumcmAIUsed{[简要用途, 如语言润色, 代码调试等]}
+
+支撑材料格式如下.
+
+\section*{AI工具使用详情}
+
+\subsection*{工具信息}
+\noindent
+\begin{tabularx}{\textwidth}{@{}XX@{}}
+  \toprule
+  项目 & 填写内容 \\
+  \midrule
+  工具名称 & \textit{填写实际使用的产品或工具名称} \\
+  版本或型号 & \textit{填写实际版本、模型名称或可识别的型号} \\
+  使用日期 & \textit{YYYY-MM-DD 至 YYYY-MM-DD} \\
+  \bottomrule
+\end{tabularx}
+
+\subsection*{具体使用目的和环节}
+逐项说明 AI 用于语言润色、代码调试、资料整理或其他环节；不得笼统写“辅助论文”。明确其输入、输出及对应论文位置。
+
+\subsection*{主要提示方式与使用过程}
+说明主要提示策略与迭代过程，可附具有代表性的交互片段。不要包含参赛者姓名、学校或赛区信息。
+
+\subsection*{采纳、人工修改与核验}
+除语言润色外，逐项记录 AI 输出是否采纳、由谁进行何种人工修改、采用何种数据或实验复核，以及最终结论是否发生变化。
+
+\subsection*{人工核验清单}
+\begin{enumerate}[label=\arabic*)]
+  \item 核对公式推导、单位、边界条件和符号一致性；
+  \item 在独立环境中运行全部代码并复现论文表图；
+  \item 核验引用、数据来源和事实陈述；
+  \item 确认核心建模与分析由参赛队主导；
+  \item 确认论文声明与本详情文件一致。
+\end{enumerate}
+
 
 %参考文献
 \begin{thebibliography}{9}%宽度9
@@ -408,7 +492,7 @@ f(x) =
     全国大学生数学建模竞赛论文格式规范 (2023 年 修改).
     \bibitem{3} \url{https://www.latexstudio.net}
 \end{thebibliography}
-
+  
 \newpage
 %附录
 \begin{appendices}
@@ -467,6 +551,8 @@ dd=[dd,[tmp3;tmp(tmp4,2)]];V(tmp(tmp4,3))=[];
 [mdd,ndd]=size(dd);kk=kk+1;
 end; S=ss; D=dd(1,:);
  \end{lstlisting}
+
+未使用 AI 使用cheng bi sai zh使用了 AI wei shi yong
 
  \section{规划解决程序--lingo源代码}
 
