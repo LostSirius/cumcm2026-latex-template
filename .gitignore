@@ -31,3 +31,7 @@ tmp-pdfcrop-13964.tex
 *.pdfsync
 Temp/*
 simkai.ttf
+
+# Project build outputs
+paper.pdf
+AI工具使用详情.pdf

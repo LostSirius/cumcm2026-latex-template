@@ -1,0 +1,213 @@
+% !TEX program = xelatex
+% 2026 年全国大学生数学建模竞赛正式论文模板（电子版）
+% 编译：latexmk -xelatex paper.tex
+%
+% 提交前检查：
+% 1. 保留 withoutpreface，使电子版第一页为摘要专用页。
+% 2. 摘要（含标题、关键词）原则上不超过一页；全文不要目录。
+% 3. 摘要结束后至附录之前不超过 30 页，AI 声明和参考文献计入。
+% 4. 摘要、正文、附录、文件名和文件属性均不得泄露身份信息。
+% 5. AI 声明二选一，且必须放在参考文献之前。
+
+\documentclass[withoutpreface,bwprint]{cumcmthesis}
+\usepackage{cumcm2026}
+\usepackage{bm}
+\renewcommand{\lstlistingname}{代码}
+
+% 以下信息只供需要纸质承诺书的版本使用。
+% 电子版保持 withoutpreface 时不会输出；正式作品仍应检查 PDF 匿名性。
+\tihao{A}
+\baominghao{}
+\schoolname{}
+\membera{}
+\memberb{}
+\memberc{}
+\supervisor{}
+\yearinput{2026}
+\monthinput{9}
+\dayinput{}
+
+\title{论文题目}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+用一段完整文字概括问题背景、建模思路、求解方法与主要结论。不要把摘要写成目录式分点，不要出现公式编号、图表编号和参考文献编号。摘要专用页（含标题和关键词）原则上不超过一页。
+
+\keywords{关键词1 \quad 关键词2 \quad 关键词3 \quad 关键词4}
+\end{abstract}
+
+\section{问题重述}
+
+\subsection{问题背景}
+
+根据赛题准确概括研究背景与实际意义，不大段照抄赛题原文，不引入无法核实的资料。
+
+\subsection{问题提出}
+
+将赛题要求转化为可求解的数学问题。
+
+\begin{enumerate}
+  \item 问题一：……
+  \item 问题二：……
+  \item 问题三：……
+\end{enumerate}
+
+\section{问题分析}
+
+说明各问的已知条件、决策变量、约束和目标之间的关系，给出总体建模思路。若问题之间存在递进关系，应明确哪些量沿用、哪些条件变化。
+
+\section{模型假设}
+
+\begin{enumerate}
+  \item 假设 1：……（说明必要性和可能影响）
+  \item 假设 2：……
+  \item 假设 3：……
+\end{enumerate}
+
+\section{符号说明}
+
+\begin{table}[htbp]
+  \centering
+  \caption{主要符号说明}
+  \label{tab:symbol}
+  \begin{tabular}{ccl}
+    \toprule
+    符号 & 单位 & 含义 \\
+    \midrule
+    $n$ & -- & 样本容量或对象数量 \\
+    $x_i$ & -- & 第 $i$ 个决策变量或观测 \\
+    $f(\cdot)$ & -- & 目标函数 \\
+    $\bm{\theta}$ & -- & 待估参数向量 \\
+    $\varepsilon$ & -- & 随机误差或残差 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{模型建立与求解}
+
+\subsection{问题一的模型与求解}
+
+\subsubsection{模型建立}
+
+先定义变量和参数，再给出目标函数与约束，并解释每一部分的实际含义。
+
+\begin{equation}
+\begin{aligned}
+\min_{\bm{x}}\quad
+& f(\bm{x}) \\
+\text{s.t.}\quad
+& g_j(\bm{x}) \leq 0,\quad j=1,2,\ldots,m,\\
+& \bm{x}\in\mathcal{X}.
+\end{aligned}
+\end{equation}
+
+\subsubsection{求解方法}
+
+说明算法流程、输入数据、参数依据和实现环境。关键步骤应能由附录中的完整程序复现。
+
+\subsubsection{结果与分析}
+
+给出主要数值结果，并检查数量级、单位、边界条件和约束满足情况。
+
+\begin{table}[htbp]
+  \centering
+  \caption{问题一主要结果（替换为实际结果）}
+  \label{tab:q1}
+  \begin{tabular}{lccc}
+    \toprule
+    方案或指标 & 数值 1 & 数值 2 & 数值 3 \\
+    \midrule
+    目标函数值 & -- & -- & -- \\
+    约束违反量 & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{问题二的模型与求解}
+
+说明问题二对前述模型的继承与修改，再依次给出模型、算法、结果和解释。
+
+\subsection{问题三的模型与求解}
+
+按“模型—方法—结果—解释”的顺序作答。若本问涉及评价、稳健性或推广，应给出可核验的量化结果。
+
+\section{模型检验与灵敏度分析}
+
+从残差、约束满足情况、基准模型对比或现实一致性等方面检验模型。对关键参数作灵敏度分析，说明结论稳定区间和发生变化的条件。
+
+\section{模型评价与推广}
+
+\subsection{模型优点}
+
+\begin{enumerate}
+  \item 模型针对赛题约束，变量、目标和边界条件定义完整；
+  \item 求解过程可复现，主要结论同时具有数值与机理支撑。
+\end{enumerate}
+
+\subsection{模型不足}
+
+\begin{enumerate}
+  \item 部分假设简化了真实过程，可能低估某类不确定性；
+  \item 数据口径或参数估计仍可进一步细化。
+\end{enumerate}
+
+\subsection{改进与推广}
+
+说明可补充的数据、约束或算法，以及模型可迁移的相近问题。
+
+% AI 工具使用声明：无论是否使用都必须声明，且位于参考文献之前。
+% 二者只能保留一个。使用 AI 时还须提交“AI工具使用详情.pdf”。
+\CumcmAINotUsed
+% \CumcmAIUsed{语言润色、代码调试}
+
+\begin{thebibliography}{99}
+  \bibitem{mcm2026format}
+  全国大学生数学建模竞赛组委会.
+  全国大学生数学建模竞赛论文格式规范（2026年修订稿）[Z].
+  2026.
+  \bibitem{mcm2026ai}
+  全国大学生数学建模竞赛组委会.
+  全国大学生数学建模竞赛人工智能工具使用规定（2026年试行）[Z].
+  2026.
+\end{thebibliography}
+
+\begin{appendices}
+
+\section{支撑材料文件列表}
+
+支撑材料压缩包中的文件如下。若确实没有支撑材料，删除本表并明确写出“本论文没有支撑材料”。
+
+\begin{center}
+\begin{tabular}{cll}
+  \toprule
+  序号 & 文件名 & 说明 \\
+  \midrule
+  1 & \texttt{problem1.py} & 问题一完整可运行源程序 \\
+  2 & \texttt{problem2.py} & 问题二完整可运行源程序 \\
+  3 & \texttt{data.xlsx} & 自主查阅或整理的数据 \\
+  4 & \texttt{AI工具使用详情.pdf} & 使用 AI 时保留；未使用时删除 \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\section{源程序}
+
+附录须包含建模所用的全部完整、可运行源程序；源文件还应放入支撑材料。若确实没有用到程序，应明确写出“本论文没有用到程序”。
+
+\begin{lstlisting}[language=Python,caption={问题一源程序（替换为完整可运行代码）}]
+# -*- coding: utf-8 -*-
+"""问题一：请粘贴完整可运行程序，不要只给伪代码。"""
+
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\end{appendices}
+
+\end{document}

@@ -1,0 +1,80 @@
+% !TEX program = xelatex
+% 仅在使用 AI 时提交本文件编译出的“AI工具使用详情.pdf”。
+% 本 PDF 放入支撑材料，不装订进论文正文。
+% 全文不得出现姓名、学校、赛区等身份信息。
+
+\documentclass[a4paper,12pt,fontset=fandol]{ctexart}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,headheight=15pt}
+\usepackage{booktabs,tabularx,array}
+\usepackage{enumitem,fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{2em}
+\linespread{1.35}
+\setlist{leftmargin=2em,itemsep=0.25em,topsep=0.4em,parsep=0pt}
+
+\title{\heiti\zihao{3} AI工具使用详情}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+本文件对应论文中的 AI 工具使用声明，仅作为支撑材料提交，不装订进论文正文。
+
+\section{工具信息}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+  \toprule
+  项目 & 填写内容 \\
+  \midrule
+  工具名称 & 填写实际使用的产品或工具名称 \\
+  版本或型号 & 填写版本号、模型名称或其他可识别型号 \\
+  使用日期 & 2026-09-10 至 2026-09-13 \\
+  \bottomrule
+\end{tabularx}
+
+\section{具体使用目的和环节}
+
+逐项说明 AI 用于哪些环节，例如语言润色、代码调试或资料整理。不得笼统写“辅助论文”。每项写明对应论文位置、输入内容、所得输出和是否进入最终稿。
+
+\begin{enumerate}
+  \item 语言润色：用于第 X 节部分表述的通顺性修改；未改变模型结构、公式与数值结论。
+  \item 代码调试：用于定位程序报错；最终算法、参数和结果均由参赛队核验后确定。
+\end{enumerate}
+
+\section{主要提示方式与使用过程}
+
+说明主要提示策略、迭代过程和取舍。可以附代表性交互示例，但不得包含身份信息，也不必粘贴全部对话。
+
+\begin{enumerate}
+  \item 给出问题背景与已有公式，要求检查符号是否自洽；
+  \item 针对具体报错询问可能原因，由参赛队本地复现后决定是否采纳。
+\end{enumerate}
+
+\section{采纳、人工修改和核验}
+
+除语言润色外，逐项说明哪些输出被采纳、作了何种人工修改、使用何种数据或实验复核，以及最终结论是否变化。核心建模与分析须由参赛队主导。
+
+\begin{enumerate}
+  \item 公式与推导：逐步核对，未采纳无法解释的改写；
+  \item 程序与数值：在独立环境中运行全部代码，复现论文图表；
+  \item 文献与事实：核验引用和数据来源，删除无法核对的陈述。
+\end{enumerate}
+
+\section{人工核验清单}
+
+\begin{enumerate}
+  \item 核对公式推导、单位、边界条件和符号一致性；
+  \item 独立运行全部代码并复现论文图表；
+  \item 核验引用、数据来源和事实陈述；
+  \item 确认核心建模与分析由参赛队主导；
+  \item 确认论文中的 AI 声明与本详情一致。
+\end{enumerate}
+
+\end{document}

@@ -151,10 +151,14 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 	{\mcm@endoldtabular\egroup}
 % 每行缩进两个汉字
 \setlength\parindent{2em}
-% 设置字体
-\setmainfont{Times New Roman}
+% 设置西文字体；Overleaf/Linux 没有 Windows 字体时自动回退。
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}
 %\setmonofont{Courier New}
-\setsansfont{Arial} 
+\IfFontExistsTF{Arial}
+  {\setsansfont{Arial}}
+  {\setsansfont{TeX Gyre Heros}}
 \newcommand*{\kai}{\kaishu} 
 \newcommand*{\song}{\songti}
 
@@ -373,7 +377,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
    	3.\uline{\mbox{\kern1em}\mcm@tokens@memberc\hfill} \makebox[0.46em]{}\par
    \end{minipage}\par\vskip2em
     \mcm@commit@string@supervisorname\uline{\mbox{\hspace{1em}}\mcm@tokens@supervisor\hfill}\makebox[0.66em]{}\par
-    \hspace{0.1cm} （{\kaishu 指导教师签名意味着对参赛队的行为和论文的真实性负责}）
+    \hspace{0.1cm} （{\kaishu 指导教师或指导教师组负责人签名意味着对参赛队的行为和论文的真实性负责}）
     %{\kaishu\mcm@commit@string@inform\par}
     \vskip2ex
     \newlength{\mcm@lenA}
@@ -595,19 +599,19 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newcommand*{\mcm@cap@tablename}{表}
 \newcommand*{\mcm@cap@appendixname}{附录}
 \newcommand*{\mcm@cap@abstractname}{摘\quad 要}
- %%%  中文关键字
-\newcommand*{\mcm@cap@keywordsname}{关键字}
+ %%%  中文关键词
+\newcommand*{\mcm@cap@keywordsname}{关键词}
 
  %%% 承诺书中的常量
 \newcommand*\mcm@commit@string@headname{赛区评阅编号（由赛区组委会填写）：}
 \newcommand*\mcm@commit@string@titlea{\the\year 高教社杯全国大学生数学建模竞赛}
 \newcommand*\mcm@commit@string@titleb{承\hspace{1em}诺\hspace{1em}书}
 \newcommand\mcm@commit@string@contents{\quotation
-我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。
+我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从https://www.mcm.edu.cn下载）。
 
-我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。
+我们完全清楚，竞赛期间严禁参赛队员以任何方式与队外任何人（包括指导教师）交流、讨论任何与赛题有关的问题；参赛队员无论主动参与讨论，还是被动接收讨论信息，均视为严重违反竞赛纪律。竞赛期间，参赛队员不得在任何交流平台（包括但不仅限于“贴吧”、QQ 群、微信群、网络直播间、知乎、小红书、CSDN、GitHub 等）浏览、发布或讨论与赛题相关的内容，否则一律视为严重违反竞赛纪律。
 
-%我们完全清楚，在竞赛中必须合法合规地使用文献资料和软件工具，不能有任何侵犯知识产权的行为。否则我们将失去评奖资格，并可能受到严肃处理。
+我们完全清楚，在竞赛中必须合法合规地使用文献资料和软件工具，不能有任何侵犯知识产权的行为。否则我们将失去评奖资格，并可能受到严肃处理。
 
 {\bfseries\song 我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。}
 

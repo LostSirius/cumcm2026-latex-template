@@ -1,0 +1,25 @@
+name: Build LaTeX
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  xelatex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile paper
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: paper.tex
+          latexmk_use_xelatex: true
+      - name: Compile AI usage details
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: AI工具使用详情.tex
+          latexmk_use_xelatex: true
