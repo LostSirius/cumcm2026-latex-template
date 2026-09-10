@@ -13,6 +13,10 @@
 
 面向 2026 年全国大学生数学建模竞赛的非官方 LaTeX 论文模板。项目提供可直接填写的正式论文骨架、2026 年 AI 工具使用声明、支撑材料清单和独立的 AI 工具使用详情模板，并兼容本地 TeX Live 与 Overleaf。
 
+> [!WARNING]
+> **本模板必须使用 XeLaTeX，不能使用 pdfLaTeX。**
+> Overleaf 导入后请立即打开 **Menu → Compiler → XeLaTeX**，并将 **Main document** 设为 `paper.tex`。如果日志第一行出现 `This is pdfTeX` 或 `preloaded format=pdflatex`，说明编译器尚未切换。
+
 > [!IMPORTANT]
 > 本项目不是全国大学生数学建模竞赛组委会官方模板，不代表组委会或任何赛区认可。提交前必须以[官网最新通知](https://www.mcm.edu.cn/)和所在赛区要求为准。
 
@@ -23,7 +27,7 @@
 - 不生成目录；AI 工具使用声明固定放在参考文献之前。
 - 提供问题重述、模型假设、符号说明、分问求解、检验、评价和附录骨架。
 - 附录预留支撑材料文件列表和完整源程序位置。
-- 提供独立的 `AI工具使用详情.tex`，用于生成支撑材料中的说明 PDF。
+- 提供独立的 `templates/AI工具使用详情.tex`，用于生成支撑材料中的说明 PDF。
 - Windows 优先使用 Times New Roman/Arial；Overleaf/Linux 自动回退到 TeX Gyre 字体。
 - 使用 `listings` 展示代码，无需 Python、Pygments 或 `shell-escape`。
 
@@ -54,15 +58,17 @@
 ```text
 .
 ├── paper.tex                  # 正式论文主文件
-├── AI工具使用详情.tex         # 使用 AI 时单独编译并放入支撑材料
-├── cumcmthesis.cls            # 文档类（派生自上游 CUMCMThesis）
-├── cumcm2026.sty              # 2026 年补充样式
 ├── latexmkrc                  # latexmk / Overleaf 编译配置
+├── README.md
+├── style/
+│   ├── cumcmthesis.cls        # 文档类（派生自上游 CUMCMThesis）
+│   └── cumcm2026.sty          # 2026 年补充样式
+├── templates/
+│   └── AI工具使用详情.tex     # 使用 AI 时单独编译
 ├── figures/                   # 论文图片
 ├── assets/                    # README 项目视觉资源
-├── README.md
-├── NOTICE.md
-└── CHANGELOG.md
+├── docs/                      # 来源、更新记录和贡献说明
+└── .github/workflows/         # Linux + XeLaTeX 自动编译
 ```
 
 ## Overleaf 使用
@@ -71,9 +77,19 @@
 2. 登录 [Overleaf](https://www.overleaf.com/)。
 3. 选择 **New Project → Upload Project**，上传整个 ZIP。
 4. 在 **Menu** 中将 **Main document** 设为 `paper.tex`。
-5. 将 **Compiler** 设为 **XeLaTeX**，然后点击 **Recompile**。
+5. 将 **Compiler** 设为 **XeLaTeX**。
+6. 选择 **Recompile from scratch**，清除先前由 pdfLaTeX 产生的缓存。
 
-仓库根目录的 `latexmkrc` 已指定 XeLaTeX；若 Overleaf 没有自动识别，手动设置一次即可。不要使用 pdfLaTeX。
+仓库根目录的 `latexmkrc` 已指定 XeLaTeX，但 Overleaf 的项目编译器设置可能覆盖它，因此仍应手动确认。`paper.tex` 顶部的 `% !TEX program = xelatex` 也只是编辑器提示，不能替代 Overleaf 设置。
+
+若看到以下错误：
+
+```text
+This is pdfTeX ... preloaded format=pdflatex
+XeTeX is required to compile this document.
+```
+
+这不是模板损坏，而是 Overleaf 仍在使用 pdfLaTeX。按上述步骤切换到 XeLaTeX 即可。
 
 共享协作时，点击 Overleaf 右上角 **Share**，使用邮件邀请或创建可编辑链接。建议三名队员分工编辑不同章节，合并前统一检查符号、单位和引用。
 
@@ -83,7 +99,7 @@
 
 ```bash
 git clone <本仓库的 HTTPS 地址>
-cd cumcm2026-latex-template
+cd CUMCM2026-LaTeX-Template
 latexmk -xelatex paper.tex
 ```
 
@@ -179,10 +195,10 @@ Windows PowerShell、Linux 和 macOS 的命令相同。中文源文件统一使�
 使用 AI 时，还须编译：
 
 ```bash
-latexmk -xelatex "AI工具使用详情.tex"
+latexmk -xelatex "templates/AI工具使用详情.tex"
 ```
 
-将生成的 `AI工具使用详情.pdf` 放进支撑材料压缩包，不要放进论文正文。详情须写明：
+将生成的 `templates/AI工具使用详情.pdf` 复制进支撑材料压缩包，不要放进论文正文。详情须写明：
 
 1. 工具名称、版本或型号；
 2. 具体使用目的和环节；
@@ -250,8 +266,20 @@ latexmk -xelatex "AI工具使用详情.tex"
 
 PDF 是源文件的构建产物，仓库只维护可审查的源文件。GitHub Actions 和 Overleaf 均可自动编译。
 
-## 来源与声明
+## References（参考与依据）
+
+本模板的规范判断与实现主要参考：
+
+1. 全国大学生数学建模竞赛组委会：[论文格式规范（2026年修订稿）](https://www.mcm.edu.cn/html_cn/node/4cd596519c9eb9fbd866398f6df0caa3.html)。
+2. 全国大学生数学建模竞赛组委会：[人工智能工具使用规定（2026年试行）](https://www.mcm.edu.cn/html_cn/node/fef94648f2836ab6cc81586f4c38512b.html)。
+3. 上游 LaTeX 模板：[latexstudio/CUMCMThesis](https://github.com/latexstudio/CUMCMThesis)。
+4. Overleaf 文档：[Changing compiler and TeX Live version](https://www.overleaf.com/learn/how-to/Changing_compiler_and_TeX_Live_version)。
+5. GitHub Actions LaTeX 构建：[xu-cheng/latex-action](https://github.com/xu-cheng/latex-action)。
+
+请注意：竞赛官网与所在赛区的最新通知优先级高于本仓库文档。
+
+## 来源、改动与权利声明
 
 本仓库是 [latexstudio/CUMCMThesis](https://github.com/latexstudio/CUMCMThesis) 的派生版本，保留 GitHub Fork 关系和上游提交历史。主要改动包括正式论文骨架、2026 年 AI 说明、Overleaf 字体回退、隐私检查指南和自动编译配置。
 
-上游仓库当前未提供明确的许可证文件，本仓库因此不擅自附加新的软件许可证。使用、修改和再分发前，请自行确认上游作者授权及适用规则。详见 [NOTICE.md](NOTICE.md)。
+上游仓库当前未提供明确的许可证文件，本仓库因此不擅自附加新的软件许可证。使用、修改和再分发前，请自行确认上游作者授权及适用规则。详见 [docs/NOTICE.md](docs/NOTICE.md)。版本变化见 [docs/CHANGELOG.md](docs/CHANGELOG.md)，贡献说明见 [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)。
